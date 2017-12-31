@@ -1,0 +1,41 @@
+{
+  "name": "china-regions-data",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "中国行政区划【省、市、区县】数据（GB/T 2260）",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/senntyou/china-regions"
+  },
+  "keywords": [
+    "中国",
+    "行政区划",
+    "省市",
+    "省市区",
+    "省份",
+    "城市",
+    "区县"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senntyou/china-regions/issues"
+  },
+  "scripts": {
+    "all": "npm run province && npm run city && npm run district && npm run one-level && npm run two-levels && npm run three-levels && npm run three-levels-full",
+    "province": "node ./scripts/province.js",
+    "city": "node ./scripts/city.js",
+    "district": "node ./scripts/district.js",
+    "one-level": "node ./scripts/one-level.js",
+    "two-levels": "node ./scripts/two-levels.js",
+    "three-levels": "node ./scripts/three-levels.js",
+    "three-levels-full": "node ./scripts/three-levels.js --full"
+  },
+  "homepage": "https://github.com/senntyou/china-regions",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "chalk": "^2.3.0",
+    "fs-extra": "^5.0.0",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0"
+  }
+}
