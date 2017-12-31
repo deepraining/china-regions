@@ -2,7 +2,7 @@
   "name": "china-regions-data",
   "version": "0.0.1",
   "main": "index.js",
-  "description": "中国行政区划【省、市、区县】数据（GB/T 2260）",
+  "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）",
   "repository": {
     "type": "git",
     "url": "https://github.com/senntyou/china-regions"
