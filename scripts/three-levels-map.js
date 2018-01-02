@@ -47,7 +47,6 @@ var districtMap = {
 
 _.forEach(province, (name, code) => {
     result[code] = {
-        code: code,
         name: name,
         children: {}
     };
@@ -58,12 +57,10 @@ _.forEach(city, (name, code) => {
     // 记录一个城市前缀
     cityPrefixes[code.slice(0, 4)] = !0;
     result[code.slice(0, 2) + '0000'].children[code] = {
-        code: code,
         name: name,
         children: {}
     };
     districtMap[code] = {
-        code: code,
         name: name,
         children: {}
     };
@@ -74,22 +71,18 @@ _.forEach(district, (name, code) => {
     // 有父市级行政单位
     if (cityPrefixes[code.slice(0, 4)])
         districtMap[code.slice(0, 4) + '00'].children[code] = {
-            code: code,
             name: name
         };
     // 没有
     else {
         result[code.slice(0, 2) + '0000'].children[code] = {
-            code: code,
             name: name
         };
         districtMap[code] = {
-            code: code,
             name: name,
             children: {}
         };
         districtMap[code].children[code] = {
-            code: code,
             name: name
         };
     }
@@ -98,17 +91,17 @@ _.forEach(district, (name, code) => {
 _.forEach(result, (item) => {
     logger.success(`${item.name} 一共 ${_.keys(item.children).length} 个市级行政单位`);
 
-    _.forEach(item.children, (subItem) => {
+    _.forEach(item.children, (subItem, code) => {
         // 补足数据（有的区级没有父市级，有的市级没有子区级）
-        if (subItem.code.slice(4, 6) == '00' || argv.full) {
+        if (code.slice(4, 6) == '00' || argv.full) {
             // 区级没有父市级
-            subItem.children = districtMap[subItem.code].children;
+            subItem.children = districtMap[code].children;
 
             // 市级没有子区级
             if (!_.keys(subItem.children).length) {
                 if (argv.full)
-                    subItem.children[subItem.code] = {
-                        code: subItem.code,
+                    subItem.children[code] = {
+                        code: code,
                         name: subItem.name
                     };
                 else delete subItem.children;

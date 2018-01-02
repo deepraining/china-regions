@@ -1,6 +1,6 @@
 {
   "name": "china-regions-data",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）",
   "repository": {

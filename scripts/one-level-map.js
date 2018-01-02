@@ -10,7 +10,7 @@ var logger = require('../util/logger');
 var result = {};
 
 _.forEach(province, (name, code) => {
-    result[code] = {code: code, name: name};
+    result[code] = {name: name};
 });
 
 logger.success(`一共 ${_.keys(result).length} 个省级行政单位`);

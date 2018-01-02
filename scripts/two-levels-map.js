@@ -20,7 +20,6 @@ var result = {
 
 _.forEach(province, (name, code) => {
     result[code] = {
-        code: code,
         name: name,
         children: {}
     };
@@ -31,7 +30,6 @@ _.forEach(city, (name, code) => {
     // 记录一个城市前缀
     cityPrefixes[code.slice(0, 4)] = !0;
     result[code.slice(0, 2) + '0000'].children[code] = {
-        code: code,
         name: name
     };
 });
@@ -40,7 +38,6 @@ _.forEach(city, (name, code) => {
 _.forEach(district, (name, code) => {
     if (!cityPrefixes[code.slice(0, 4)])
         result[code.slice(0, 2) + '0000'].children[code] = {
-            code: code,
             name: name
         };
 });
