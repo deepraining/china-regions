@@ -83,6 +83,24 @@
 ]
 ```
 
+### [一级数据（map）](./one-level-map.json)
+
+省份：一级数据（map）
+
+```
+{
+  "110000": {
+    "code": "110000",
+    "name": "北京市"
+  },
+  "120000": {
+    "code": "120000",
+    "name": "天津市"
+  },
+  ...
+}
+```
+
 ### [二级数据](./two-levels.json)
 
 省份 + 地级市（区县）：二级数据
@@ -120,6 +138,38 @@ note:
 
 * 对于一般的省份，第二级数据列出的是 `地级市` + `直接隶属省级的区县`
 * 对于直辖市、特别行政区等，第二级数据列出的是 `区县` 一级
+
+### [二级数据（map）](./two-levels-map.json)
+
+省份 + 地级市（区县）：二级数据（map）
+
+```
+{
+  "110000": {
+    "code": "110000",
+    "name": "北京市",
+    "children": {
+      "110101": {
+        "code": "110101",
+        "name": "东城区"
+      },
+      ...
+    }
+  },
+  "120000": {
+    "code": "120000",
+    "name": "天津市",
+    "children": {
+      "120101": {
+        "code": "120101",
+        "name": "和平区"
+      },
+      ...
+    }
+  },
+  ...
+}
+```
 
 ### [三级数据](./three-levels.json)
 
@@ -221,6 +271,58 @@ note:
 * 对于直接隶属省级的区县，第二级数据列出的是 `区县` 一级，第三级使用和第二级一样的数据
 * 对于没有区县一级的地级市，第三级使用和第二级一样的数据
 
+### [三级数据（map）](./three-levels-map.json)
+
+省份 + 地级市 + 区县：三级数据（map）
+
+```
+{
+  "110000": {
+    "code": "110000",
+    "name": "北京市",
+    "children": {
+      "110101": {
+        "code": "110101",
+        "name": "东城区"
+      },
+      "110102": {
+        "code": "110102",
+        "name": "西城区"
+      },
+      ...
+    }
+  },
+  ...
+}
+```
+
+### [三级数据（填充至完整的 3 级）（map）](./three-levels-map-full.json)
+
+省份 + 地级市 + 区县：三级数据（填充至完整的 3 级）（map）
+
+```
+{
+  "110000": {
+    "code": "110000",
+    "name": "北京市",
+    "children": {
+      "110101": {
+        "code": "110101",
+        "name": "东城区",
+        "children": {
+          "110101": {
+            "code": "110101",
+            "name": "东城区"
+          }
+        }
+      },
+      ...
+    }
+  },
+  ...
+}
+```
+
 ### 特殊情况举例
 
 * 直辖市：北京、天津、上海、重庆
@@ -241,6 +343,8 @@ chinaRegions.oneLevel // 一级数据
 chinaRegions.twoLevels // 二级数据
 chinaRegions.threeLevels // 三级数据
 chinaRegions.threeLevelsFull // 三级数据（填充至完整的 3 级）
+chinaRegions.threeLevelsMap // 三级数据（map）
+chinaRegions.threeLevelsMapFull // 三级数据（填充至完整的 3 级）（map）
 
 // 或者直接使用单个数据
 var list = require('china-regions-data/list.json') // 列表数据
@@ -251,4 +355,6 @@ var oneLevel = require('china-regions-data/one-level.json') // 一级数据
 var twoLevels = require('china-regions-data/two-levels.json') // 二级数据
 var threeLevels = require('china-regions-data/three-levels.json') // 三级数据
 var threeLevelsFull = require('china-regions-data/three-levels-full.json') // 三级数据（填充至完整的 3 级）
+var threeLevelsMap = require('china-regions-data/three-levels-map.json') // 三级数据（map）
+var threeLevelsMapFull = require('china-regions-data/three-levels-map-full.json') // 三级数据（填充至完整的 3 级）（map）
 ```

@@ -1,6 +1,6 @@
 {
   "name": "china-regions-data",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）",
   "repository": {
@@ -21,14 +21,18 @@
     "url": "https://github.com/senntyou/china-regions/issues"
   },
   "scripts": {
-    "all": "npm run province && npm run city && npm run district && npm run one-level && npm run two-levels && npm run three-levels && npm run three-levels-full",
+    "all": "npm run province && npm run city && npm run district && npm run one-level && npm run one-level-map && npm run two-levels && npm run two-levels-map && npm run three-levels && npm run three-levels-full && npm run three-levels-map && npm run three-levels-map-full",
     "province": "node ./scripts/province.js",
     "city": "node ./scripts/city.js",
     "district": "node ./scripts/district.js",
     "one-level": "node ./scripts/one-level.js",
+    "one-level-map": "node ./scripts/one-level-map.js",
     "two-levels": "node ./scripts/two-levels.js",
+    "two-levels-map": "node ./scripts/two-levels-map.js",
     "three-levels": "node ./scripts/three-levels.js",
-    "three-levels-full": "node ./scripts/three-levels.js --full"
+    "three-levels-full": "node ./scripts/three-levels.js --full",
+    "three-levels-map": "node ./scripts/three-levels-map.js",
+    "three-levels-map-full": "node ./scripts/three-levels-map.js --full"
   },
   "homepage": "https://github.com/senntyou/china-regions",
   "readmeFilename": "README.md",
