@@ -1,8 +1,8 @@
 {
   "name": "china-regions-data",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
-  "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）",
+  "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）（另加海外数据）",
   "repository": {
     "type": "git",
     "url": "https://github.com/senntyou/china-regions"
@@ -32,7 +32,11 @@
     "three-levels": "node ./scripts/three-levels.js",
     "three-levels-full": "node ./scripts/three-levels.js --full",
     "three-levels-map": "node ./scripts/three-levels-map.js",
-    "three-levels-map-full": "node ./scripts/three-levels-map.js --full"
+    "three-levels-map-full": "node ./scripts/three-levels-map.js --full",
+
+    "country-all": "npm run two-levels-country && npm run two-levels-country-map",
+    "two-levels-country": "node ./scripts/two-levels-country.js",
+    "two-levels-country-map": "node ./scripts/two-levels-country-map.js"
   },
   "homepage": "https://github.com/senntyou/china-regions",
   "readmeFilename": "README.md",

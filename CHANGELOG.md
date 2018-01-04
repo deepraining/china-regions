@@ -1,5 +1,9 @@
 # china-regions changelog
 
+## 0.0.4
+
+- add country data
+
 ## 0.0.3
 
 - update `one-level-map.json`

@@ -1,4 +1,4 @@
-# 中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）
+# 中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）（另加海外数据）
 
 ## json
 
@@ -328,7 +328,9 @@ chinaRegions.province // 省份数据
 chinaRegions.city // 地级市数据
 chinaRegions.district // 区县数据
 chinaRegions.oneLevel // 一级数据
+chinaRegions.oneLevelMap // 一级数据（map）
 chinaRegions.twoLevels // 二级数据
+chinaRegions.twoLevelsMap // 二级数据（map）
 chinaRegions.threeLevels // 三级数据
 chinaRegions.threeLevelsFull // 三级数据（填充至完整的 3 级）
 chinaRegions.threeLevelsMap // 三级数据（map）
@@ -340,9 +342,93 @@ var province = require('china-regions-data/province.json') // 省份数据
 var city = require('china-regions-data/city.json') // 地级市数据
 var district = require('china-regions-data/district.json') // 区县数据
 var oneLevel = require('china-regions-data/one-level.json') // 一级数据
+var oneLevelMap = require('china-regions-data/one-level-map.json') // 一级数据（map）
 var twoLevels = require('china-regions-data/two-levels.json') // 二级数据
+var twoLevelsMap = require('china-regions-data/two-levels-map.json') // 二级数据（map）
 var threeLevels = require('china-regions-data/three-levels.json') // 三级数据
 var threeLevelsFull = require('china-regions-data/three-levels-full.json') // 三级数据（填充至完整的 3 级）
 var threeLevelsMap = require('china-regions-data/three-levels-map.json') // 三级数据（map）
 var threeLevelsMapFull = require('china-regions-data/three-levels-map-full.json') // 三级数据（填充至完整的 3 级）（map）
+```
+
+
+## 另加海外数据
+
+国内省市区之外的海外国家一级数据
+
+### 编码规则
+
+* 第一级：`code: 990000, name: 海外`
+* 第二级：`code: 99xxxx, name: 美国/英国...`
+* 国家编码规则：`99` + `填充0` + `国际区号` ，当国际区号不足 4 位时，前面用 0 填充，补足 4 位，整个补足 6 位
+* 因为美国和加拿大国际区号一样，所以改加拿大国际区号为 2
+
+### json
+
+* [海外列表数据](./country.json)
+
+```
+{
+  "990001": "美国",
+  "990002": "加拿大",
+  "990007": "俄罗斯",
+  "990020": "埃及",
+  ...
+}
+```
+
+* [海外二级数据](./two-levels-country.json)
+
+```
+[
+  {
+    "code": "990000",
+    "name": "海外",
+    "children": [
+      {
+        "code": "990001",
+        "name": "美国"
+      },
+      {
+        "code": "990002",
+        "name": "加拿大"
+      },
+      ...
+    ]
+  }
+]
+```
+
+* [海外二级数据（map）](./two-levels-country-map.json)
+
+```
+{
+  "990000": {
+    "name": "海外",
+    "children": {
+      "990001": {
+        "name": "美国"
+      },
+      "990002": {
+        "name": "加拿大"
+      },
+      ...
+    }
+  }
+}
+```
+
+### node
+
+```
+var chinaRegions = require('china-regions-data');
+
+chinaRegions.country // 海外列表数据
+chinaRegions.twoLevelsCountry // 海外二级数据
+chinaRegions.twoLevelsCountryMap // 海外二级数据（map）
+
+// 或者直接使用单个数据
+var country = require('china-regions-data/country.json') // 海外列表数据
+var twoLevelsCountry = require('china-regions-data/two-levels-country.json') // 海外二级数据
+var twoLevelsCountryMap = require('china-regions-data/two-levels-country-map.json') // 海外二级数据（map）
 ```
