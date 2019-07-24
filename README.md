@@ -190,7 +190,7 @@ import threeLevelsFull from '@senntyou/china-regions/lib/three-levels-full.json'
 - 国家编码规则：`99` + `填充0` + `国际区号` ，当国际区号不足 4 位时，前面用 0 填充，补足 4 位，整个补足 6 位
 - 因为美国和加拿大国际区号一样，所以改加拿大国际区号为 2
 
-- [海外二级数据](./lib/country-levels.json)
+### [海外二级数据](./lib/country-levels.json)
 
 ```
 import countryLevels from '@senntyou/china-regions/lib/country-levels.json';
