@@ -1,8 +1,13 @@
 {
-  "name": "china-regions-data",
-  "version": "0.0.4",
-  "main": "index.js",
+  "name": "@senntyou/china-regions",
+  "version": "0.1.0",
   "description": "中国行政区划【省、市、区县】数据（汇总、省份、地级市、区县、一级、二级、三级）（另加海外数据）",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/china-regions",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/senntyou/china-regions"
@@ -16,34 +21,65 @@
     "城市",
     "区县"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/senntyou/china-regions/issues"
   },
-  "scripts": {
-    "all": "npm run province && npm run city && npm run district && npm run one-level && npm run one-level-map && npm run two-levels && npm run two-levels-map && npm run three-levels && npm run three-levels-full && npm run three-levels-map && npm run three-levels-map-full",
-    "province": "node ./scripts/province.js",
-    "city": "node ./scripts/city.js",
-    "district": "node ./scripts/district.js",
-    "one-level": "node ./scripts/one-level.js",
-    "one-level-map": "node ./scripts/one-level-map.js",
-    "two-levels": "node ./scripts/two-levels.js",
-    "two-levels-map": "node ./scripts/two-levels-map.js",
-    "three-levels": "node ./scripts/three-levels.js",
-    "three-levels-full": "node ./scripts/three-levels.js --full",
-    "three-levels-map": "node ./scripts/three-levels-map.js",
-    "three-levels-map-full": "node ./scripts/three-levels-map.js --full",
-
-    "country-all": "npm run two-levels-country && npm run two-levels-country-map",
-    "two-levels-country": "node ./scripts/two-levels-country.js",
-    "two-levels-country-map": "node ./scripts/two-levels-country-map.js"
-  },
-  "homepage": "https://github.com/senntyou/china-regions",
   "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "precommit": "npm run lint-staged",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write \"./**/*.{js,md,json}\"",
+    "eslint": "eslint \"./**/*.js\"",
+    "eslint:fix": "eslint \"./**/*.js\" --fix",
+    "flow": "flow",
+    "flow:check": "flow check",
+    "build": "babel-node script",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test-watch": "jest --watch --notify",
+    "test-cover": "jest --coverage",
+    "coverage": "npm run test-cover && opn coverage/lcov-report/index.html"
+  },
   "devDependencies": {
-    "chalk": "^2.3.0",
-    "fs-extra": "^5.0.0",
-    "lodash": "^4.17.4",
-    "minimist": "^1.2.0"
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.3.1",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.4.0",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.3",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.94.0",
+    "fs-extra": "^8.1.0",
+    "husky": "^1.3.1",
+    "jest": "^24.3.1",
+    "lint-staged": "^8.1.0",
+    "lodash": "^4.17.15",
+    "opn-cli": "^4.0.0",
+    "prettier": "^1.15.3"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
